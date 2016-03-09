@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+{% load pipeline %}
+{% stylesheet 'main' %}
+</head>
+<body>
+
+
+<div class="container text-center">
+    <h2 class="display-1">Craigslist Posting</h2>
+    <p class="lead">
+        Proof of concept semi/auto-posting app
+    </p>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 center-block">
+                <form class="text-left" id="verify-auth">
+                  <div class="verify-auth-block  
+                {% if show_job_post_form == True %}
+                    hidden
+                {% endif %}">
+                    <fieldset class="form-group col-sm-6">
+                      <small class="text-muted">Craigslist Email Address</small>
+                      <input type="email" class="form-control" id="cl_email" name="cl_email" placeholder="" value="{{ cl_email }}">
+                    </fieldset>
+                    <fieldset class="form-group col-sm-6">
+                      <small class="text-muted">Craigslist Password</small>
+                      <input type="password" autocomplete="off" class="form-control" id="cl_password" autocomplete="off" name="cl_password" placeholder="" value="{{ cl_password }}">
+                    </fieldset>
+                    <fieldset class="form-group col-sm-12 hidden">
+                      <small class="text-muted">Craigslist Account ID</small>
+                      <input type="text" class="form-control" id="accountID" name="accountID" placeholder="" value="{{ cl_id }}">
+                    </fieldset>
+                    <input type="hidden" id="cl_account_num_input" val="">
+                      <fieldset class="form-group col-sm-12">
+                          <button type="submit" class="btn btn-primary btn-lg btn-block verify-auth-btn">Verify Credentials</button>
+                      </fieldset>
+                    </div>
+                    <fieldset class="form-group col-sm-12">
+                        <button type="button" class="btn btn-primary btn-block toggle-verify-auth-btn  
+                        {% if show_job_post_form == False %}
+                            hidden
+                        {% endif %}">Toggle Authentication</button>
+                    </fieldset>
+                    <small class="text-muted text-center fl w100">CL Account ID: <span id="cl_account_num">{{ cl_id }}</span></small>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 center-block">
+                <form class="text-left 
+                {% if show_job_post_form == False %}
+                    hidden
+                {% endif %}" id="post-job">
+                    <fieldset class="form-group col-sm-12">
+                      <small class="text-muted">Select a Market</small>
+                      <select class="form-control" id="campaign">
+                        <option>SF Bay Area - $75</option>
+                        <option>Sacremento - $35</option>
+                        <option>Monterey - $15</option>
+                        <option>Modesto - $15</option>
+                      </select>
+                    </fieldset>
+                    <fieldset class="form-group col-sm-12">
+                      <small class="text-muted">Select Regions</small>
+                      <select multiple class="form-control" id="campaign">
+                        <option>San Francisco</option>
+                        <option>Peninsula</option>
+                        <option>East Bay</option>
+                        <option>South Bay</option>
+                        <option>Santa Cruz</option>
+                      </select>
+                    </fieldset>
+                    <fieldset class="form-group col-sm-12">
+                      <small class="text-muted">Select Categories</small>
+                      <select multiple class="form-control" id="campaign">
+                        <option>et cetera</option>
+                        <option>general labor</option>
+                        <option>transportation</option>
+                      </select>
+                    </fieldset>
+                    <fieldset class="form-group col-sm-12">
+                      <small class="text-muted">Select a Campaign</small>
+                      <select class="form-control" id="campaign">
+                        <option>RideShare Driver Partner (Earn Extra Income This Fall)</option>
+                        <option>Earn $X/wk in fares as a Partner Driver With RideShare</option>
+                        <option>RideShare Partner - No Experience Needed</option>
+                      </select>
+                    </fieldset>
+                    <!-- 
+                    <fieldset class="form-group">
+                      <label for="exampleTextarea">Example textarea</label>
+                      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                    </fieldset>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                        Option one is this and that&mdash;be sure to include why it's great
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                        Option two can be something else and selecting it will deselect option one
+                      </label>
+                    </div>
+                    <div class="radio disabled">
+                      <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+                        Option three is disabled
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox"> Check me out
+                      </label>
+                    </div> -->
+                    <fieldset class="form-group col-sm-12">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block post-job-btn">Post Job</button>
+                    </fieldset>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+{% javascript 'main' %}
+</body>
+</html>

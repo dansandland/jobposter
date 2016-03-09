@@ -1,0 +1,28 @@
+body {
+    padding-top: 60px;
+}
+@media (max-width: 980px) {
+    body {
+        padding-top: 60px;
+    }
+}
+
+.center-block {
+    float: none;
+}
+
+form {
+    margin: 20px 0;
+}
+
+.pt-10 { margin-top:10px; }
+.pt-20 { margin-top:20px; }
+.pb-10 { margin-bottom:10px; }
+.pb-20 { margin-bottom:20px; }
+
+.fl { float: left }
+.fr { float: left }
+
+.w100 { width: 100%; }
+
+.hidden { display: none; }
